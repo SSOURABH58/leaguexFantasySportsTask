@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { connect } from "react-redux";
+import { getMatchs } from "./redux/duck/fantasyCricket";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function App() {
+function App({ fantasyCricket }) {
+  console.log("this : ", fantasyCricket);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div>
+          <Switch>
+            {/* <Route path="/" exact component={<div>HI</div>} /> */}
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    fantasyCricket: state.fantasyCricket,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchData: (url) => dispatch(getMatchs(url)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
