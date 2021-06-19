@@ -1,0 +1,42 @@
+@import "utilities";
+
+.leagues {
+  @include flexCenter(column);
+  justify-content: flex-start;
+  width: 100%;
+  height: 100vh;
+
+  .header {
+    background-color: var(--primeColorD);
+    // height: 10vh;
+    width: 100%;
+    // padding: 10px;
+    // padding-top: 0;
+    @include flexCenter();
+    .backAro {
+      //   height: 100%;
+      //   padding: 5px;
+      cursor: pointer;
+    }
+    .mainHeader {
+      width: 80%;
+      @include flexCenter(column);
+      .title {
+        font-weight: bold;
+        font-size: 18px;
+        padding: 5px;
+        // height: 1rem;
+        // margin-top: 8px;
+      }
+      .timer {
+        background-color: var(--primeColorGreen);
+        padding: 3px 15px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: 400;
+        font-size: 12px;
+      }
+      margin-bottom: 10px;
+    }
+  }
+}

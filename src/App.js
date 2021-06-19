@@ -2,17 +2,17 @@ import "./App.scss";
 import { connect } from "react-redux";
 import { getMatchs } from "./redux/duck/fantasyCricket";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Matches from "./components/matches/matches";
+import Leagues from "./components/leagues/leagues";
 
 function App({ fantasyCricket }) {
-  console.log("this : ", fantasyCricket);
   return (
     <div className="App">
       <Router>
-        <div>
-          <Switch>
-            {/* <Route path="/" exact component={<div>HI</div>} /> */}
-          </Switch>
-        </div>
+        <Switch>
+          <Route path="/" exact component={Matches} />
+          <Route path="/:id" component={Leagues} />
+        </Switch>
       </Router>
     </div>
   );

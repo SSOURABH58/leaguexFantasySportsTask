@@ -1,0 +1,85 @@
+@import "utilities";
+
+.matches {
+  height: 100vh;
+  width: 75%;
+  @include flexCenter(column);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 10vh;
+  .title {
+    @include flexCenter();
+    justify-content: flex-start;
+    margin: 15px;
+    .iconCont {
+      border-radius: 10px;
+      background-color: var(--primeColorA);
+      @include flexCenter();
+      padding: 5px;
+      height: 1em;
+      width: 1em;
+    }
+    font-weight: bold;
+    font-size: 32px;
+    p {
+      margin-left: 15px;
+    }
+  }
+  .blendcont {
+    position: relative;
+    width: 100%;
+
+    &::after {
+      content: "";
+      background-image: linear-gradient(
+        to right,
+        var(--primeColorBg),
+        rgba(0, 0, 0, 0)
+      );
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+    &::before {
+      content: "";
+      background-image: linear-gradient(
+        to left,
+        var(--primeColorBg),
+        rgba(0, 0, 0, 0)
+      );
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      top: 0;
+      //   left: 0;
+      right: 0;
+    }
+  }
+
+  .matchCards {
+    @include flexCenter();
+    justify-content: flex-start;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    margin-top: 20px;
+    width: 100%;
+    a {
+      text-decoration: none;
+      color: var(--primeColorText);
+    }
+
+    // padding: 0px 300px;
+    .scroletray {
+      height: inherit;
+      @include flexCenter();
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}

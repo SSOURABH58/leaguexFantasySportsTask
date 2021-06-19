@@ -1,0 +1,64 @@
+@import "utilities";
+
+.matchCard {
+  @include flexCenter(column);
+  width: 350px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: 3px var(--primeColorA) solid;
+  background-color: var(--primeColorB);
+  padding-top: 16px;
+  margin: 20px;
+
+  cursor: pointer;
+  //   white-space: nowrap;
+  .teams {
+    @include flexCenter();
+    justify-content: space-around;
+    width: 100%;
+    p {
+      font-weight: 400;
+      font-size: 28px;
+      text-align: center;
+    }
+    .teamImages {
+      font-weight: 500;
+      font-size: 38px;
+      text-align: center;
+      img {
+        width: 2em;
+        // margin-bottom: 5px;
+      }
+      p {
+        font-weight: bold;
+        margin: 0;
+        font-size: 32px;
+        // height: 1rem;
+      }
+    }
+  }
+  p {
+    font-weight: 400;
+    font-size: 32px;
+    text-align: center;
+    margin: 10px;
+  }
+  .timer {
+    @include flexCenter();
+    width: 100%;
+    background-color: var(--primeColorBg);
+    margin-bottom: -2px;
+    p {
+      font-weight: 500;
+      font-size: 28px;
+      text-align: center;
+    }
+  }
+  .timerGreen {
+    background-color: var(--primeColorGreen);
+    // border: px var(--primeColorGreen) solid;
+  }
+}
+.matchCardGreen {
+  border: 3px var(--primeColorGreen) solid;
+}

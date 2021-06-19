@@ -1,0 +1,28 @@
+@import "utilities";
+
+.leagu {
+  width: 80%;
+  @include flexCenter();
+  background-color: var(--primeColorD);
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  .winprice {
+    font-weight: bold;
+  }
+  .slots {
+    opacity: 0.5;
+    font-size: 16px;
+    text-align: center;
+    flex-grow: 1;
+  }
+  .iconcont {
+    @include flexCenter();
+    margin-left: 15px;
+    p {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+}

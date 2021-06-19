@@ -1,0 +1,115 @@
+@import "utilities";
+
+.createSquad {
+  width: 100%;
+  @include flexCenter(column);
+  // flex-grow: 1;
+  height: 90vh;
+  .nav {
+    width: 100%;
+    padding: 5px 10%;
+    @include flexCenter();
+    justify-content: space-around;
+    background-color: var(--primeColorB);
+    font-weight: 400;
+    opacity: 0.5;
+    font-size: 24px;
+    p {
+      cursor: pointer;
+      color: var(--primeColorGreen);
+    }
+    .lowerLimit {
+      color: red;
+    }
+  }
+  .main {
+    flex-grow: 1;
+    height: 20vh;
+    width: 100%;
+    @include flexCenter(column);
+    justify-content: flex-start;
+    .title {
+      font-size: 18px;
+      margin-top: 5px;
+    }
+  }
+  .proceedBtn {
+    @include flexCenter();
+    padding: 5px;
+    width: 100%;
+    background-color: var(--primeColorB);
+    p {
+      background-color: blue;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      opacity: 1;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        opacity: 0.5;
+      }
+      &:active {
+        opacity: 1;
+      }
+    }
+  }
+  .botumMenu {
+    margin-top: 5px;
+    justify-self: flex-end;
+    width: 100%;
+    padding: 5px 10%;
+    @include flexCenter();
+    justify-content: space-around;
+    background-color: var(--primeColorD);
+    font-weight: 400;
+    // opacity: 0.5;
+    font-size: 16px;
+
+    .menueItem {
+      @include flexCenter(column);
+      p {
+        opacity: 0.5;
+      }
+
+      cursor: pointer;
+      .iteminfo {
+        font-weight: bold;
+        opacity: 1;
+        // font-size: 28px;
+      }
+      .icons {
+        @include flexCenter();
+        img {
+          width: 1.5rem;
+        }
+        p {
+          margin-left: 5px;
+          font-weight: bold;
+          // font-size: 28px;
+        }
+      }
+      .credit {
+        color: var(--primeColorGreen);
+      }
+    }
+  }
+  .listCont {
+    margin-top: 20px;
+    width: 100%;
+    @include flexCenter(column);
+    justify-content: flex-start;
+    overflow-y: scroll;
+    flex-grow: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  a {
+    text-decoration: none;
+    color: var(--primeColorText);
+  }
+}

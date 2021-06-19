@@ -6,3 +6,10 @@
   --primeColorGreen: #5ac343;
   --primeColorText: #ffffff;
 }
+
+@mixin flexCenter($dir: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $dir;
+}
