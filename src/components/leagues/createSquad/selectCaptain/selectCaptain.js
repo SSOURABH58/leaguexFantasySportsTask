@@ -34,7 +34,7 @@ export const SelectCaptain = ({
               <td className={styles.small}>
                 <img src={player.team_logo} alt="" />
               </td>
-              <td>{player.team_name}</td>
+              <td>{player.name}</td>
               <td className={styles.small}>{player.event_total_points}</td>
               {/* <td className={styles.small}>btn</td>
               <td className={styles.small}>btn</td> */}

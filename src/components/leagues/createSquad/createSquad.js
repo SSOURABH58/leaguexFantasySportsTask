@@ -4,11 +4,23 @@ import { connect } from "react-redux";
 import styles from "./createSquad.module.scss";
 import Squadtable from "./squadtable/squadtable";
 import SelectCaptain from "./selectCaptain/selectCaptain";
-import { getPlayers, setSquad } from "../../../redux/duck/fantasyCricket";
-import { useHistory, Switch, Route, Link } from "react-router-dom";
+import {
+  getPlayers,
+  setSquad,
+  getSquads,
+} from "../../../redux/duck/fantasyCricket";
+import { useHistory, Switch, Route, Link, useLocation } from "react-router-dom";
 
-export const CreateSquad = ({ getPlayers, Players, matchId, setSquad }) => {
+export const CreateSquad = ({
+  getPlayers,
+  Players,
+  matchId,
+  setSquad,
+  resMySquad,
+  getSquads,
+}) => {
   const history = useHistory();
+  const location = useLocation();
   const [PlayerTypes, setPlayerTypes] = useState({
     bat: [],
     wk: [],
@@ -85,8 +97,16 @@ export const CreateSquad = ({ getPlayers, Players, matchId, setSquad }) => {
       event_id: 1,
     };
     setSquad(squad);
-    history.push(`/${matchId}/Squads`);
+    // console.log("ddddddddddd");
   };
+
+  useEffect(() => {
+    // console.log(location);
+    // if (location.pathname === `/${matchId}/CreateSquad/selectCaptain`) {
+    if (resMySquad) {
+      history.push(`/${matchId}/Squads`);
+    }
+  }, [history, matchId, resMySquad, location]);
 
   useEffect(() => {
     getPlayers();
@@ -260,6 +280,7 @@ const mapStateToProps = (state) => ({
   // matches: state.fantasyCricket.matches,
   Players: state.fantasyCricket.Players,
   matchId: state.fantasyCricket.matchId,
+  resMySquad: state.fantasyCricket.MySquad,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -269,6 +290,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setSquad: (payload) => {
       dispatch(setSquad(payload));
+    },
+    getSquads: (payload) => {
+      dispatch(getSquads(payload));
     },
   };
 };

@@ -21,6 +21,7 @@ export const Leagues = ({
   Leagues,
   matches,
   Squads,
+  resMySquad,
 }) => {
   const { id } = useParams();
   const match = matches.filter((match) => String(match.id) === id)[0];
@@ -67,7 +68,13 @@ export const Leagues = ({
           <CreateSquad />
         </Route>
         <Route path="/:id">
-          <LeaguesCont Leagues={Leagues} id={id} Squads={Squads} />
+          <LeaguesCont
+            Leagues={Leagues}
+            id={id}
+            Squads={Squads}
+            getSquads={getSquads}
+            resMySquad={resMySquad}
+          />
         </Route>
       </Switch>
     </div>
@@ -78,6 +85,7 @@ const mapStateToProps = (state) => ({
   Leagues: state.fantasyCricket.Leagues,
   matches: state.fantasyCricket.matches,
   Squads: state.fantasyCricket.Squads,
+  resMySquad: state.fantasyCricket.MySquad,
 });
 
 const mapDispatchToProps = (dispatch) => {

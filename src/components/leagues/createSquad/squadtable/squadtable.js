@@ -34,7 +34,7 @@ export default function Squadtable({
               <td className={styles.small}>
                 <img src={player.team_logo} alt="" />
               </td>
-              <td>{player.team_name}</td>
+              <td>{player.name}</td>
               <td className={styles.small}>0%</td>
               <td className={styles.small}>{player.event_total_points}</td>
               <td className={styles.small}>{player.event_player_credit}</td>

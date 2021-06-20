@@ -35,7 +35,7 @@ const fantasyCricket = (state = initialState, { type, payload }) => {
     case GET_LEAGUES:
       return { ...state, ...payload };
     case GET_SQUADS:
-      return { ...state, ...payload };
+      return { ...state, ...payload, MySquad: NaN };
     case GET_PLAYERS:
       return { ...state, ...payload };
     case SET_MY_SQUAD:
@@ -75,6 +75,7 @@ export const getPlayers = () => async (dispatch, getState) => {
 };
 
 export const setSquad = (payload) => async (dispatch) => {
+  // console.log("Payload", payload);
   const data = await fcAPI.post(`/squad`, payload, header);
   const MySquad = data.data;
   return dispatch({ type: SET_MY_SQUAD, payload: { MySquad } });

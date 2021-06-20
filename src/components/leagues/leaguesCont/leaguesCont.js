@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiTwotoneTrophy } from "react-icons/ai";
 import { RiTeamFill } from "react-icons/ri";
 import styles from "./leaguesCont.module.scss";
@@ -7,7 +7,16 @@ import Leagu from "./Leagu/Leagu";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Squad from "./squad/squad";
 
-export default function LeaguesCont({ Leagues, id, Squads }) {
+export default function LeaguesCont({
+  Leagues,
+  id,
+  Squads,
+  getSquads,
+  resMySquad,
+}) {
+  useEffect(() => {
+    getSquads(id);
+  }, [getSquads, id, resMySquad]);
   return (
     <div className={styles.leaguesCont}>
       {/* <Router> */}
@@ -21,9 +30,9 @@ export default function LeaguesCont({ Leagues, id, Squads }) {
         </Route>
         {/* <Route path={`/${id}/Squads`} exact> */}
         <Route path="/:id/Squads" exact>
-          <div className={styles.squads}>
-            <p>{`My Squads ${Squads.length}/10`}</p>
-            <div className={styles.listCont}>
+          <p className={styles.squadCount}>{`My Squads ${Squads.length}/10`}</p>
+          <div className={styles.listCont}>
+            <div className={styles.squads}>
               {Squads.map((squad, i) => (
                 <Squad squad={squad} key={i} index={i} />
               ))}
