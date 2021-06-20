@@ -37,7 +37,7 @@ export default function LeaguesCont({
                 <Squad squad={squad} key={i} index={i} />
               ))}
 
-              {Squads.length <= 10 ? (
+              {Squads.length < 10 ? (
                 <Link to={`/${id}/CreateSquad/BAT`}>
                   <div className={styles.newSquadBtn}>Create new Squad</div>
                 </Link>
