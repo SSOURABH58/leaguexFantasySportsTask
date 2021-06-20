@@ -1,17 +1,27 @@
 import "./App.scss";
 import { connect } from "react-redux";
 import { getMatchs } from "./redux/duck/fantasyCricket";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import Matches from "./components/matches/matches";
 import Leagues from "./components/leagues/leagues";
 
-function App({ fantasyCricket }) {
+function App({ fantasyCricket, matches }) {
   return (
     <div className="App">
       <Router>
         <Switch>
           <Route path="/" exact component={Matches} />
-          <Route path="/:id" component={Leagues} />
+          {matches[0] ? (
+            <Route path="/:id" component={Leagues} />
+          ) : (
+            <Redirect to="/" />
+          )}
         </Switch>
       </Router>
     </div>
@@ -21,6 +31,7 @@ function App({ fantasyCricket }) {
 const mapStateToProps = (state) => {
   return {
     fantasyCricket: state.fantasyCricket,
+    matches: state.fantasyCricket.matches,
   };
 };
 
