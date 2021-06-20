@@ -39,6 +39,12 @@ export const CreateSquad = ({
     ).length;
     const ar = MySquad.filter((player) => player.role === "All-Rounder").length;
     const bowl = MySquad.filter((player) => player.role === "Bowler").length;
+    const TeamA = MySquad.filter(
+      (player) => player.team_name === MySquad[0].team_name
+    );
+    const TeamB = MySquad.filter(
+      (player) => player.team_name !== MySquad[0].team_name
+    );
     if (MySquad.length <= 11 && Credit - player.event_player_credit >= 0) {
       switch (player.role) {
         case "Batsman":
@@ -78,6 +84,19 @@ export const CreateSquad = ({
         default:
           return;
         // break;
+      }
+      if (
+        TeamA[0] &&
+        TeamA[0].team_name === player.team_name &&
+        MySquad.length - TeamB.length >= 6
+      ) {
+        return;
+      } else if (
+        TeamB[0] &&
+        TeamB[0].team_name === player.team_name &&
+        MySquad.length - TeamA.length >= 6
+      ) {
+        return;
       }
       setCredit(Credit - player.event_player_credit);
       setMySquad([...MySquad, player]);
