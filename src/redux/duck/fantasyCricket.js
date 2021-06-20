@@ -24,23 +24,21 @@ export const GET_MATCH_ID = "fantasyCricket/GET_MATCH_ID";
 export const GET_LEAGUES = "fantasyCricket/GET_LEAGUES";
 export const GET_SQUADS = "fantasyCricket/GET_SQUADS";
 export const GET_PLAYERS = "fantasyCricket/GET_PLAYERS";
+export const SET_MY_SQUAD = "fantasyCricket/SET_MY_SQUAD";
 
 const fantasyCricket = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_MATCHS:
-      // console.log(GET_MATCHS, payload);
       return { ...state, ...payload };
     case GET_MATCH_ID:
-      // console.log(GET_MATCHS, payload);
       return { ...state, ...payload };
     case GET_LEAGUES:
-      // console.log(GET_MATCHS, payload);
       return { ...state, ...payload };
     case GET_SQUADS:
-      // console.log(GET_MATCHS, payload);
       return { ...state, ...payload };
     case GET_PLAYERS:
-      // console.log(GET_MATCHS, payload);
+      return { ...state, ...payload };
+    case SET_MY_SQUAD:
       return { ...state, ...payload };
 
     default:
@@ -66,13 +64,20 @@ export const getSquads = (id) => async (dispatch) => {
   const Squads = data.data;
   return dispatch({ type: GET_SQUADS, payload: { Squads } });
 };
+
 export const getPlayers = () => async (dispatch, getState) => {
   const state = getState();
   const id = state.fantasyCricket.matchId;
-  console.log(state);
+  // console.log(state);
   const data = await fcAPI.get(`/squad/players?match_id=${id}`, header);
   const Players = data.data;
   return dispatch({ type: GET_PLAYERS, payload: { Players } });
+};
+
+export const setSquad = (payload) => async (dispatch) => {
+  const data = await fcAPI.post(`/squad`, payload, header);
+  const MySquad = data.data;
+  return dispatch({ type: SET_MY_SQUAD, payload: { MySquad } });
 };
 
 export const getMatchId = (payload) => ({

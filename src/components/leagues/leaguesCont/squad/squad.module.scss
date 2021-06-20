@@ -22,13 +22,15 @@
 
     p {
       font-weight: 400;
-      span {
+      font-size: 16px;
+      @include flexCenter();
+      .playerTitle {
         margin-left: 10px;
         font-weight: bold;
         background-color: blue;
         padding: 5px;
         border-radius: 5px;
-        // width: 26px;
+        width: 2em;
       }
     }
   }

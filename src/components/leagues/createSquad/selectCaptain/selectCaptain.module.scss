@@ -1,0 +1,34 @@
+@import "utilities.scss";
+@import "./../squadtable/squadtable.module.scss";
+
+.selectCaptain {
+  @include flexCenter(column);
+  // width: 100%;
+  @extend .squadtable;
+  justify-self: flex-start;
+  flex-grow: 1;
+
+  .small {
+    p {
+      background-color: blue;
+      padding: 3px;
+      font-weight: bold;
+      width: 2em;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+  }
+  .selected {
+    p {
+      color: var(--primeColorText);
+      opacity: 1;
+      background-color: var(--primeColorGreen);
+    }
+  }
+  .btnDisable {
+    pointer-events: none;
+    p {
+      background-color: gray;
+    }
+  }
+}
